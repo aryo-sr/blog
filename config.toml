@@ -39,6 +39,11 @@ languages = ["go", "dockerfile", "php"]
 
 [[params.social]]
 name = "github"
+url = "https://github.com/aryo-sr"
+fa_icon = "fa-github"
+
+[[params.social]]
+name = "old github"
 url = "https://github.com/baddwin"
 fa_icon = "fa-github"
 
@@ -47,7 +52,3 @@ name = "linkedin"
 url = "https://bit.ly/baddwin"
 fa_icon = "fa-linkedin"
 
-[[params.social]]
-name = "lastfm"
-url = "https://www.last.fm/user/baddwin"
-fa_icon = "fa-lastfm"
