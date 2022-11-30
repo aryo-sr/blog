@@ -46,14 +46,14 @@ Untuk controllernya, letak file controller di dalam folder `Adminhtml`.
 Selebihnya mengikuti format struktur yang telah ditentukan seperti pada standard route. Maka struktur controller seperti ini:
 ```
 ├── Adminhtml                                                                   
-│   └── Blog                                                                                                                        
-│       └── Post                                                            
-│           └── New.php                                                        
+│   └── Blog                                                                                                                        
+│       └── Post                                                            
+│           └── New.php                                                        
 ```
 
 Referensi resmi dari [halaman dokumentasi Magento][ref2].
 
 [^1]: kata guru bahasa Indonesia dulu, akhiran _-mum_ lebih baku daripada _-mal_
 
-[ref1]: {{< ref "routing-di-magento" >}}
+[ref1]: {{< ref "008-routing-di-magento" >}}
 [ref2]: https://devdocs.magento.com/guides/v2.3/architecture/archi_perspectives/components/modules/mod_and_areas.html

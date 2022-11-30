@@ -217,6 +217,6 @@ Inspirasi dari [Alan Storm][ref2].
 
 [^1]: block adalah class khusus yang menjadi jembatan atau penghubung antara layout xml dan template phtml, semua logic yang dipakai oleh template berada di sini yang bisa diakses dengan variable `$block`
 
-[ref1]: {{< ref "routing-di-magento" >}}
+[ref1]: {{< ref "008-routing-di-magento" >}}
 
 [ref2]: https://alanstorm.com/magento-2-controller-result-objects/
