@@ -62,6 +62,6 @@ jobs:
           projectName: aryosid-root
           directory: docs
           # workingDirectory: blog
-          branch: main
+          branch: deploy
           # Optional: Enable this if you want to have GitHub Deployments triggered
           # gitHubToken: ${{ secrets.GITHUB_TOKEN }}
