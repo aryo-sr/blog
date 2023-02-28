@@ -1,5 +1,4 @@
 My Blog
 =======
 
-[![github pages](https://github.com/baddwin/blog/actions/workflows/gh-pages.yml/badge.svg?branch=main)](https://github.com/baddwin/blog/actions/workflows/gh-pages.yml)
-
+[![Deploy Hugo site to Pages](https://github.com/aryo-sr/blog/actions/workflows/hugo.yml/badge.svg)](https://github.com/aryo-sr/blog/actions/workflows/hugo.yml)
