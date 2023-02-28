@@ -39,12 +39,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-    # Run a build step here if your project requires
-      - uses: actions/checkout@v2
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+    # Run a build step here if your project requires
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -61,6 +60,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 08c9dcec98d57a522dc3c9d821ff7bc5
           projectName: aryosid-root
-          directory: blog
+          directory: .
+          branch: gh-pages
           # Optional: Enable this if you want to have GitHub Deployments triggered
-          # gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
