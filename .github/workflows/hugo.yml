@@ -55,13 +55,13 @@ jobs:
         run: hugo --minify
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@main
+        uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 08c9dcec98d57a522dc3c9d821ff7bc5
           projectName: aryosid-root
           directory: docs
-          workingDirectory: blog
+          # workingDirectory: blog
           branch: gh-pages
           # Optional: Enable this if you want to have GitHub Deployments triggered
           # gitHubToken: ${{ secrets.GITHUB_TOKEN }}
