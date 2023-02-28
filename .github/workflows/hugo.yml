@@ -60,7 +60,8 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 08c9dcec98d57a522dc3c9d821ff7bc5
           projectName: aryosid-root
-          directory: .
+          directory: docs
+          workingDirectory: blog
           branch: gh-pages
           # Optional: Enable this if you want to have GitHub Deployments triggered
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          # gitHubToken: ${{ secrets.GITHUB_TOKEN }}
