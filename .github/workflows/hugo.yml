@@ -55,7 +55,7 @@ jobs:
         run: hugo --minify
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/pages-action@main
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 08c9dcec98d57a522dc3c9d821ff7bc5
