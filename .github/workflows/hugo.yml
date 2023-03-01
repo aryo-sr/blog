@@ -73,6 +73,7 @@ jobs:
         id: download
         with:
           name: simpan_artefak
+          path: docs
 
       - name: Display structure of downloaded files
         run: ls -R
@@ -87,7 +88,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 08c9dcec98d57a522dc3c9d821ff7bc5
           projectName: aryosid-root
-          directory: ${{steps.download.outputs.download-path}}
+          directory: docs
           # workingDirectory: blog
           branch: deploy
           # Optional: Enable this if you want to have GitHub Deployments triggered
