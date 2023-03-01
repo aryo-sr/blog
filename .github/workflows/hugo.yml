@@ -26,24 +26,14 @@ defaults:
     shell: bash
 
 jobs:
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.cf_pages.outputs.url }}
+  hugo:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
-#      name: Publish to Cloudflare Pages
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
-    # Run a build step here if your project requires
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -53,6 +43,24 @@ jobs:
 
       - name: Build
         run: hugo --minify
+
+
+  # Deployment job
+  deploy:
+    needs: hugo
+    environment:
+      name: github-pages
+      url: ${{ steps.cf_pages.outputs.url }}/blog/
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+#      name: Publish to Cloudflare Pages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+    # Run a build step here if your project requires
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
