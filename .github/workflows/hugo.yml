@@ -74,12 +74,9 @@ jobs:
         with:
           name: simpan_artefak
 
-      - name: Echo download path
-        run: echo ${{steps.download.outputs.download-path}}
-
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: ${{ github.workspace }}
+        working-directory: ${{steps.download.outputs.download-path}}
 
     # Run a build step here if your project requires
 
@@ -90,7 +87,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 08c9dcec98d57a522dc3c9d821ff7bc5
           projectName: aryosid-root
-          directory: .
+          directory: ${{steps.download.outputs.download-path}}
           # workingDirectory: blog
           branch: deploy
           # Optional: Enable this if you want to have GitHub Deployments triggered
