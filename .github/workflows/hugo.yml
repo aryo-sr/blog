@@ -27,6 +27,8 @@ defaults:
 
 jobs:
   hugo:
+    environment:
+      name: Build Hugo
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,12 +46,18 @@ jobs:
       - name: Build
         run: hugo --minify
 
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: simpan_artefak
+          path: ${{ github.workspace }}/docs/
+          retention-days: 5
 
   # Deployment job
   deploy:
     needs: hugo
     environment:
-      name: github-pages
+      name: Push Pages
       url: ${{ steps.cf_pages.outputs.url }}/blog/
     runs-on: ubuntu-latest
     permissions:
@@ -59,6 +67,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Download artifact hugo
+        uses: actions/download-artifact@v3
+        with:
+          name: simpan_artefak
+
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ${{ github.workspace }}/docs
 
     # Run a build step here if your project requires
 
