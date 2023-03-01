@@ -75,7 +75,7 @@ jobs:
 
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: ${{ github.workspace }}/docs
+        working-directory: ${{ github.workspace }}
 
     # Run a build step here if your project requires
 
@@ -86,7 +86,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 08c9dcec98d57a522dc3c9d821ff7bc5
           projectName: aryosid-root
-          directory: docs
+          directory: .
           # workingDirectory: blog
           branch: deploy
           # Optional: Enable this if you want to have GitHub Deployments triggered
