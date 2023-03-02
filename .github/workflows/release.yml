@@ -2,7 +2,8 @@ name: Release Compiled HTML
 
 on:
   workflow_run:
-    workflows: [Deploy Hugo site to Pages]
+    workflows:
+      - Deploy Hugo site to Pages
     types:
       - completed
 
