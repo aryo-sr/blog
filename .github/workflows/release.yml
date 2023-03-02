@@ -5,9 +5,6 @@ on:
     tags:
       - '*'
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 jobs:
   download:
     runs-on: ubuntu-latest
@@ -33,21 +30,23 @@ jobs:
                run_id: lastSucceededRun.data.workflow_runs[0].id,
             });
             console.log(allArtifacts.data ?? 'error');
-            let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
-              return artifact.name == "blog_hugo"
-            })[0];
-            console.log(matchArtifact);
-            let download = await github.rest.actions.downloadArtifact({
-               owner: context.repo.owner,
-               repo: context.repo.repo,
-               artifact_id: matchArtifact.id,
-               archive_format: 'zip',
-            });
-            let fs = require('fs');
-            fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/blog_hugo.zip`, Buffer.from(download.data));
+            if (allArtifacts.length > 1) {
+              let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
+                return artifact.name == "blog_hugo"
+              })[0];
+              console.log(matchArtifact);
+              let download = await github.rest.actions.downloadArtifact({
+                 owner: context.repo.owner,
+                 repo: context.repo.repo,
+                 artifact_id: matchArtifact.id,
+                 archive_format: 'zip',
+              });
+              let fs = require('fs');
+              fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/blog_hugo.zip`, Buffer.from(download.data));
+            }
 
       - name: Show files
-        run: ls -l
+        run: ls -l blog_hugo.zip 2> /dev/null
 
       - name: Release
         uses: softprops/action-gh-release@v1
