@@ -19,16 +19,17 @@ jobs:
               workflow_id: "hugo.yml",
               status: "completed"
             });
-            console.log(lastSucceededRun);
+            console.log(lastSucceededRun.data ?? 'error');
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
                run_id: lastSucceededRun.data.workflow_runs[0].id,
             });
-            console.log(allArtifacts);
+            console.log(allArtifacts.data ?? 'error');
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "blog_hugo"
             })[0];
+            console.log(matchArtifact);
             let download = await github.rest.actions.downloadArtifact({
                owner: context.repo.owner,
                repo: context.repo.repo,
@@ -37,6 +38,9 @@ jobs:
             });
             let fs = require('fs');
             fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/blog_hugo.zip`, Buffer.from(download.data));
+
+      - name: Show files
+        run: ls -l
 
       - name: Checkout
         uses: actions/checkout@v3
