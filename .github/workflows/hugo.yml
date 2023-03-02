@@ -26,6 +26,38 @@ defaults:
     shell: bash
 
 jobs:
+  nuxt:
+    environment:
+      name: Build Nuxt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: aryo-sr/aryos-sr.github.io
+          ref: deploy
+          path: nuxt
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+
+      - name: Install dependencies
+        working-directory: nuxt
+        run: yarn install
+
+      - name: Generate
+        working-directory: nuxt
+        run: yarn build && yarn generate
+
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: root_nuxt
+          path: ${{ github.workspace }}/nuxt/dist/
+          retention-days: 3
+
   hugo:
     environment:
       name: Build Hugo
@@ -36,6 +68,7 @@ jobs:
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          path: hugo
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -45,20 +78,21 @@ jobs:
 
       - name: Build
         run: hugo --minify
+        working-directory: hugo
 
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          name: simpan_artefak
-          path: ${{ github.workspace }}/docs/
-          retention-days: 5
+          name: blog_hugo
+          path: ${{ github.workspace }}/hugo/docs/
+          retention-days: 3
 
   # Deployment job
   deploy:
-    needs: hugo
+    needs: [nuxt, hugo]
     environment:
       name: Push Pages
-      url: ${{ steps.cf_pages.outputs.url }}/blog/
+      url: ${{ steps.cf_pages.outputs.alias }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -71,13 +105,16 @@ jobs:
       - name: Download artifact hugo
         uses: actions/download-artifact@v3
         id: download
-        with:
-          name: simpan_artefak
-          path: docs
+#        with:
+#          name: blog_hugo
+#          path: docs
 
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: ${{steps.download.outputs.download-path}}
+
+      - name: Unifying files
+        run: mv ${{steps.download.outputs.download-path}}/blog_hugo ${{steps.download.outputs.download-path}}/root_nuxt/
 
     # Run a build step here if your project requires
 
@@ -88,7 +125,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 08c9dcec98d57a522dc3c9d821ff7bc5
           projectName: aryosid-root
-          directory: docs
+          directory: root_nuxt
           # workingDirectory: blog
           branch: deploy
           # Optional: Enable this if you want to have GitHub Deployments triggered
