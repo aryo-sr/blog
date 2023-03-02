@@ -1,11 +1,9 @@
 name: Release Compiled HTML
 
 on:
-  workflow_run:
-    workflows:
-      - Deploy Hugo site to Pages
-    types:
-      - completed
+  push:
+    tags:
+      - '*'
 
 jobs:
   download:
@@ -15,10 +13,16 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            let lastSucceededRun = await github.rest.actions.listWorkflowRuns({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: "hugo.yml",
+              status: "completed"
+            });
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
-               run_id: context.payload.workflow_run.id - 1,
+               run_id: lastSucceededRun.workflow_runs[0].id,
             });
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "blog_hugo"
