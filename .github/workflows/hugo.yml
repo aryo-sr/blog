@@ -34,7 +34,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          repository: aryo-sr/aryos-sr.github.io
+          repository: aryo-sr/aryo-sr.github.io
           ref: deploy
           path: nuxt
 
