@@ -110,11 +110,11 @@ jobs:
 #          path: docs
 
       - name: Display structure of downloaded files
-        run: ls -R
+        run: ls -l
         working-directory: ${{steps.download.outputs.download-path}}
 
       - name: Unifying files
-        run: mv ${{steps.download.outputs.download-path}}/blog_hugo ${{steps.download.outputs.download-path}}/root_nuxt/
+        run: mv ${{steps.download.outputs.download-path}}/blog_hugo/blog ${{steps.download.outputs.download-path}}/root_nuxt/
 
     # Run a build step here if your project requires
 
@@ -123,7 +123,7 @@ jobs:
         id: cf_pages
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 08c9dcec98d57a522dc3c9d821ff7bc5
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: aryosid-root
           directory: root_nuxt
           # workingDirectory: blog
