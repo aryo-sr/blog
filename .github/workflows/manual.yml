@@ -75,6 +75,6 @@ jobs:
         #if: startsWith(github.ref, 'refs/head/')
         with:
           files: blog_hugo.zip
-          name: ${{ steps.semvers.outputs.patch }}
-          tag_name: ${{ steps.semvers.outputs.patch }}
+          name: ${{ steps.semvers.outputs.v_patch }}
+          tag_name: ${{ steps.semvers.outputs.v_patch }}
 
