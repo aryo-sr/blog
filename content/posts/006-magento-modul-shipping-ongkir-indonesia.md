@@ -25,7 +25,7 @@ Untuk saat ini kodenya tidak bisa saya _share_ secara ~~gratis~~ publik.
 Kode yang saya _share_ di Github[^2] adalah fungsi minimum sebuah modul metode pengiriman di Magento 2.
 
 Cuplikan kode:<!--more-->
-```php
+```
 /**
      * @param RateRequest $request
      * @return \Magento\Shipping\Model\Rate\Result|bool
