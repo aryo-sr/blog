@@ -48,7 +48,7 @@ jobs:
             }
 
       - name: Show files
-        run: ls -l blog_hugo.zip 2> /dev/null
+        run: ls -l
 
       - name: Get latest tag
         id: previoustag

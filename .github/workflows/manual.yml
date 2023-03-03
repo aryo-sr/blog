@@ -55,7 +55,7 @@ jobs:
             fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/blog_hugo.zip`, Buffer.from(download.data));
 
       - name: Show files
-        run: ls -l blog_hugo.zip 2> /dev/null
+        run: ls -l
 
       - name: Get latest tag
         id: previoustag
