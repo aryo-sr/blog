@@ -1,6 +1,8 @@
 baseurl = "https://aryos.id/blog/"
-languageCode = "id"
-title = "Aryo Sr. Blog"
+languageCode = "id-ID"
+defaultContentLanguage = "id"
+defaultContentLang = "id"
+title = "Blog Aryo Sr."
 
 publishDir = "docs/blog"
 
