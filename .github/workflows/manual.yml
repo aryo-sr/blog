@@ -63,11 +63,18 @@ jobs:
         with:
           prefix: v
 
+      - name: Sanitize tag
+        id: sanz
+        run: |
+          LastTag=${{ steps.previoustag.outputs.tag }}
+          OldTag=${LastTag%%_*}
+          echo "old_tag=$OldTag" >> $GITHUB_OUTPUT
+
       - name: Get next version
         id: semvers
         uses: WyriHaximus/github-action-next-semvers@v1
         with:
-          version: ${{ steps.previoustag.outputs.tag }}
+          version: ${{ steps.sanz.outputs.old_tag }}
 
       - name: Release
         id: soft_release
