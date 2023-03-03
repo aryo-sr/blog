@@ -52,7 +52,7 @@ Selanjutnya perlu membuat layout xml di `/Vendor/NamaModul/etc/frontend/layout/b
 
 Kemudian, buat _block_[^1] dan template untuk menentukan template yang dipakai oleh halaman.
 Seperti ditetapkan di layout xml di atas, maka dibuat 2 file baru:
-```php
+```
 // Block/Blog/Index.php
 <?php
 namespace Vendor\NamaModul\Block\Blog;
@@ -95,7 +95,7 @@ Tentang model akan dijelaskan di tulisan mendatang.
 ### JSON result
 Result ini digunakan untuk membuat response JSON yang lebih general selain REST.
 
-```php
+```
 public function __construct(
     //...
     Magento\Framework\Controller\Result\JsonFactory $jsonResultFactory,
@@ -120,7 +120,7 @@ public function execute()
 Result ini membuat return yang benar-benar _raw_,
 jadi sangat fleksibel untuk membuat response yang tidak biasa.
 
-```php
+```
 public function __construct(
     //...
     Magento\Framework\Controller\Result $rawResultFactory ,
@@ -173,7 +173,7 @@ Selayaknya page result, perlu dibuat layout xml dan template phtml juga selain c
 ### Redirect result
 Result ini akan mengalihkan ke URL yang ditentukan.
 
-```php
+```
 public function __construct(
     //...
     Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory
@@ -194,7 +194,7 @@ public function execute()
 ### Forward result
 Result ini akan meneruskan ke URL yang telah ditentukan.
 
-```php
+```
 public function __construct(
     //...
     Magento\Framework\Controller\Result\ForwardFactory $resultForwardFactory
