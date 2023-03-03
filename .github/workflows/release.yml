@@ -64,7 +64,7 @@ jobs:
         with:
           prefix: v
 
-      - name Sanitize tag
+      - name: Sanitize tag
         id: sanz
         run: |
           LastTag=${{ steps.previoustag.outputs.tag }}
