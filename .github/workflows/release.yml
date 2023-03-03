@@ -1,9 +1,11 @@
 name: Release Compiled HTML
 
 on:
-  push:
-    tags:
-      - '*'
+  workflow_run:
+    workflows:
+      - Deploy Hugo site to Pages
+    types:
+      - completed
 
 jobs:
   download:
@@ -48,8 +50,22 @@ jobs:
       - name: Show files
         run: ls -l blog_hugo.zip 2> /dev/null
 
+      - name: Get latest tag
+        id: previoustag
+        uses: WyriHaximus/github-action-get-previous-tag@v1
+        with:
+          prefix: v
+
+      - name: Set short git commit SHA
+        id: vars
+        run: |
+          calculatedSha=$(git rev-parse --short ${{ github.sha }})
+          echo "::set-output name=short_sha::$calculatedSha"
+
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        #if: startsWith(github.ref, 'refs/tags/')
         with:
           files: blog_hugo.zip
+          name: ${{ steps.vars.outputs.short_sha }}
+          tag_name: ${{ steps.previoustag.outputs.tag }} + '_' + ${{ steps.vars.outputs.short_sha }}
