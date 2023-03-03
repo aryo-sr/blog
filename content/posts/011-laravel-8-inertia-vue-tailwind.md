@@ -37,7 +37,7 @@ sebagai _cache_ sebelum transaksi disimpan yang akhirnya masuk ke tabel orderan.
 
 Di sini saya beri nama `TransactionBag` untuk model _cart_.
 
-```php
+```
 <?php
 
 namespace App\Models;

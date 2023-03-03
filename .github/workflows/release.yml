@@ -40,7 +40,7 @@ jobs:
                run_id: lastSucceededRun.data.workflow_runs[0].id,
             });
             console.log(allArtifacts.data ?? 'error');
-            if (allArtifacts.total_count !== undefined && allArtifacts.total_count > 1) {
+            if (allArtifacts.data !== undefined && allArtifacts.data.total_count !== undefined && allArtifacts.data.total_count > 1) {
               let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
                 return artifact.name == "blog_hugo"
               })[0];
