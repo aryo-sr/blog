@@ -1,7 +1,7 @@
 ---
 title: "Magento Mengalihkan Duniaku"
 date: 2019-07-01T23:42:22+07:00
-draft: false
+draft: true
 description: "Cerita tentang Magento dan implikasinya di dunia persilatan"
 tags: ["magento","web","dunia","php"]
 ---
