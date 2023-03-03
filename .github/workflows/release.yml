@@ -77,4 +77,4 @@ jobs:
         with:
           files: blog_hugo.zip
           name: ${{ steps.vars.outputs.short_sha }}
-          tag_name: ${{ steps.previoustag.outputs.tag }} + '_' + ${{ steps.vars.outputs.short_sha }}
+          tag_name: ${{ steps.previoustag.outputs.tag }}_${{ steps.vars.outputs.short_sha }}

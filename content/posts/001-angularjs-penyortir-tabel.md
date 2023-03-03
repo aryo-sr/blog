@@ -8,7 +8,7 @@ tags: ["angularjs", "javascript"]
 Saya mau share hasil koding pertama belajar AngularJs. Berikut *snippet* kodenya.
 <!--more-->
 
-```html
+```
 <!DOCTYPE html>
 <html>
 <head>
