@@ -64,6 +64,13 @@ jobs:
         with:
           prefix: v
 
+      - name Sanitize tag
+        id: sanz
+        run: |
+          LastTag=${{ steps.previoustag.outputs.tag }}
+          OldTag=${LastTag%%_*}
+          echo "old_tag=$OldTag" >> $GITHUB_OUTPUT
+
       - name: Set short git commit SHA
         id: vars
         run: |
@@ -73,8 +80,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         id: soft_release
-        #if: startsWith(github.ref, 'refs/tags/')
         with:
           files: blog_hugo.zip
           name: ${{ steps.vars.outputs.short_sha }}
-          tag_name: ${{ steps.previoustag.outputs.tag }}_${{ steps.vars.outputs.short_sha }}
+          tag_name: ${{ steps.sanz.outputs.old_tag }}_${{ steps.vars.outputs.short_sha }}
