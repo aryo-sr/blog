@@ -29,7 +29,7 @@ gtm_datalayer = "basic"
 
 [params.highlight]
 style = "github"
-languages = ["go", "dockerfile", "php"]
+languages = ["php","js"]
 
 [params.style]
   darkestColor = "#d35050"
