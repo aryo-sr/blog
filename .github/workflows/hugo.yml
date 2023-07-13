@@ -56,6 +56,9 @@ jobs:
       - name: Generate
         working-directory: nuxt
         run: yarn build && yarn generate
+        env:
+          BASE_URL: ${{ vars.BASE_URL }}
+          WEBSITE_NAME: ${{ vars.WEBSITE_NAME }}
 
       - name: Upload
         uses: actions/upload-artifact@v3
