@@ -8,13 +8,18 @@
 <meta content="{{ .Description | default .Site.Params.Description }}" name="description">
 <meta property="og:title" content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
+{{ $baseurl := .Site.BaseURL }}{{ with .Params.images }}{{ range first 6 . }}<meta property="og:image" content="{{ if in . "http" }}{{ . }}{{ else }}{{ $baseurl }}{{ . }}{{ end }}" />
+{{ end }}
+{{ end }}
 <meta property="og:description" content="{{ .Description | default .Site.Params.Description }}">
+<meta property="og:locale" content="{{ .Params.Locale | default .Site.Params.Locale }}" />
+<meta property="og:locale:alternate" content="en_US" />
 <meta property="og:type" content="website" />
 <title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
 {{ if .Site.Params.gtm_id }}{{- partial "gtm.html" . }}{{ end  }}
 
-<link rel="stylesheet" href="{{ .Site.BaseURL }}/css/style.css">
-<link rel="shortcut icon" href="{{ .Site.BaseURL }}/img/favicon.ico">
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
+<link rel="shortcut icon" href="{{ .Site.BaseURL }}img/favicon.ico">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 {{ with .Site.Params.highlight.style }}
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/{{ . }}.min.css">
@@ -26,4 +31,5 @@
 {{ else }}
 <link rel="canonical" href="{{ .Permalink }}">
 {{ end }}
+{{- partial "schema.html" . }}
 </head>

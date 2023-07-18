@@ -4,6 +4,10 @@ date: 2023-07-12T15:20:05+07:00
 draft: false
 description: "Template XeLaTeX untuk tugas akhir kuliah di UIN Gus Dur Pekalongan"
 tags: ["karya-ilmiah","penelitian","skripsi","latex","pdf","typesetting"]
+locale: id_ID
+images:
+  - img/2023/07/pedoman2023.png
+  - img/img/2023/07/acrobat2023.png
 ---
 
 ~~Dengan terbitnya blog tentang template (Xe)LaTeX untuk tugas akhir ini,
