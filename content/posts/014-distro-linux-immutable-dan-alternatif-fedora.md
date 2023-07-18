@@ -4,6 +4,14 @@ date: 2023-07-09T17:02:12+07:00
 draft: false
 description: "Mengikuti tren perkembangan model OS distro linux dengan konsep immutable"
 tags: ["linux", "fedora", "opensuse", "ubuntu", "immutable-os"]
+images:
+    - img/2023/07/opensusemicroos_1.png
+    - img/2023/07/opensusemicroos_2.png
+    - img/2023/07/opensusemicroos_3.png
+    - img/2023/07/opensusemicroos_4.png
+    - img/2023/07/opensusemicroos_5.png
+    - img/2023/07/opensusemicroos_6.png
+summary: "Tren OS distro linux terus berganti seiring waktu. Saat ini konsep *immutable system* semakin jamak diusung oleh distro-distro mainstream. Fedora termasuk yang terdepan dalam implementasi konsep ini sejak versi 31 melalui CoreOS untuk ranah server. Kemudian dikembangkan lagi untuk desktop melalui spin Silverblue yang menggunakan GNOME, Kinoite menggunakan KDE dan Sericea menggunakan Sway tiling window manager."
 ---
 
 Tren OS distro linux terus berganti seiring waktu.

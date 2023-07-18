@@ -9,7 +9,8 @@
   "dateModified": {{ .Lastmod }},
   "author": {
     "@type": "Person",
-    "name": {{ .Site.Params.author }}
+    "name": {{ .Site.Params.author }},
+    "url": "https://aryos.id/"
   },
   "mainEntityOfPage": { "@type": "WebPage" },
    "publisher": {
@@ -20,7 +21,7 @@
       "url": {{ (print .Site.BaseURL .Site.Params.logo) }}
     }
   },
-  "description": {{ .Summary | plainify | safeHTML }},
+  "description": {{if .Params.Summary }}{{ .Params.Summary }}{{else}}{{ .Summary | plainify | safeHTML }}{{ end }},
   "keywords": [{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}]
 }
 {{ end }}

@@ -7,14 +7,15 @@ tags: ["karya-ilmiah","penelitian","skripsi","latex","pdf","typesetting"]
 locale: id_ID
 images:
   - img/2023/07/pedoman2023.png
-  - img/img/2023/07/acrobat2023.png
+  - img/2023/07/acrobat2023.png
+summary: "Template skripsi ini dimaksudkan sebagai kanvas bagi mahasiswa FEBI UIN K.H. Abdurrahmah Wahid Pekalongan yang ingin membuat skripsi dengan LaTeX. Format penulisan sudah disesuaikan dengan Pedoman Penyusunan Skripsi terbaru dari fakultas."
 ---
 
 ~~Dengan terbitnya blog tentang template (Xe)LaTeX untuk tugas akhir ini,
 artinya penulis sudah menyelesaikan seluruh tugasnya sebagai mahasiswa.~~
 ~~Seharusnya *sih* seperti itu, tetapi saat itu penulis sedang *stuck* mengerjakan revisi.~~
 ~~Sebagai penyela untuk meringankan *pressure*, penulis merasa lebih baik merapikan 
-repository template latex dan mempublikasikannya.~~<!--more-->
+repository template latex dan mempublikasikannya.~~
 
 Sejak awal kuliah, saya sudah punya rencana untuk membuat skripsi menggunakan format $ \LaTeX $.
 LaTeX adalah bahasa markup atau sistem penyiapan dokumen untuk peranti lunak TeX. 
